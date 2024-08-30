@@ -52,6 +52,7 @@ describe("Amazon E2E Test", () => {
 
     // 10. Verify cart is empty
     const isEmpty = await cartPage.isEmpty();
+    console.log(isEmpty);
     expect(isEmpty).toBeTruthy();
 
     await page.close();

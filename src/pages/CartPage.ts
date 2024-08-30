@@ -8,6 +8,15 @@ export class CartPage {
   }
 
   async isEmpty(): Promise<boolean> {
-    return await this.page.isVisible("text=Your Amazon Cart is empty");
+    // Log the inner text of the cart to see what is actually there
+    const cartText = await this.page.textContent(
+      "h2.a-size-extra-large.a-spacing-mini.a-spacing-top-base.a-text-normal"
+    );
+    console.log("Cart Text:", cartText);
+
+    // Use a more specific selector to check visibility
+    return await this.page.isVisible(
+      "h2.a-size-extra-large.a-spacing-mini.a-spacing-top-base.a-text-normal:has-text('Your Amazon Cart is empty.')"
+    );
   }
 }
