@@ -35,10 +35,11 @@ describe("Amazon E2E Test", () => {
     await homePage.selectProduct("Dell Inspiron 15");
 
     // 5. Wait for the product page to load
+    await page.waitForNavigation();
     await page.waitForSelector("#add-to-cart-button", { timeout: 15000 });
 
     // 6. Add the product to the cart with specific quantity
-    await productPage.addToCart(1);
+    await productPage.addToCart(10);
 
     // 7. Navigate to the cart
     await page.waitForNavigation();

@@ -17,7 +17,9 @@ export class HomePage {
   }
 
   async filterByBrand(brandName: string) {
-    await this.page.click(`text=${brandName}`);
+    await this.page
+      .locator(`//span[text()="${brandName}"]/ancestor::a`)
+      .click();
   }
 
   async selectProduct(productName: string) {
